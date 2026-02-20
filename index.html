@@ -3,20 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Bug Fixer | Le Dépanneur de Code</title>
+    <title>The Bug Fixer | Expert Débogage</title>
     <style>
         :root {
             --bg: #0f172a;
             --card-bg: #1e293b;
             --text: #f8fafc;
-            --accent: #38bdf8; /* Professional Blue */
+            --accent: #38bdf8;
             --secondary: #94a3b8;
         }
         body {
-            font-family: 'Inter', -apple-system, sans-serif;
+            font-family: 'Segoe UI', Roboto, sans-serif;
             background-color: var(--bg);
             color: var(--text);
-            line-height: 1.6;
             margin: 0;
             display: flex;
             flex-direction: column;
@@ -24,135 +23,124 @@
         }
         nav {
             width: 100%;
+            max-width: 800px;
             padding: 20px;
             display: flex;
             justify-content: flex-end;
-            gap: 15px;
-            max-width: 900px;
-            box-sizing: border-box;
+            gap: 10px;
         }
         .lang-btn {
-            background: transparent;
+            background: #1e293b;
             border: 1px solid var(--secondary);
-            color: var(--secondary);
-            padding: 6px 12px;
+            color: var(--text);
+            padding: 8px 16px;
             cursor: pointer;
-            border-radius: 6px;
-            font-weight: 600;
-            transition: 0.2s;
+            border-radius: 5px;
         }
-        .lang-btn.active-lang {
+        .lang-btn.active {
             border-color: var(--accent);
             color: var(--accent);
         }
         .container {
-            max-width: 700px;
-            padding: 60px 20px;
+            max-width: 800px;
+            padding: 40px 20px;
         }
-        h1 { font-size: 3.5rem; margin-bottom: 10px; letter-spacing: -1px; }
-        .subtitle { font-size: 1.4rem; color: var(--secondary); margin-bottom: 40px; }
-        
-        /* Language Toggling */
-        [lang="fr"] { display: none; }
-        
         .card {
             background: var(--card-bg);
             padding: 30px;
             border-radius: 12px;
-            margin-bottom: 25px;
-            border: 1px solid #334155;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--accent);
         }
-        .accent-text { color: var(--accent); font-weight: bold; }
-
-        /* Form Styling */
-        form { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; }
+        h1 { font-size: 3rem; color: var(--accent); margin-bottom: 10px; }
+        
+        /* The Fix: Simple display classes */
+        .hidden { display: none !important; }
+        
+        form { display: flex; flex-direction: column; gap: 15px; }
         input, textarea {
-            background: #0f172a;
-            border: 1px solid #334155;
-            color: white;
             padding: 12px;
             border-radius: 6px;
-            font-size: 1rem;
+            border: 1px solid #334155;
+            background: #0f172a;
+            color: white;
         }
-        input:focus, textarea:focus { border-color: var(--accent); outline: none; }
-        button.submit-btn {
+        button.submit {
             background: var(--accent);
-            color: var(--bg);
-            border: none;
-            padding: 15px;
-            border-radius: 6px;
+            color: #0f172a;
             font-weight: bold;
+            padding: 15px;
+            border: none;
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 1rem;
         }
-        button.submit-btn:hover { opacity: 0.9; }
-        footer { margin-top: 40px; color: var(--secondary); font-size: 0.8rem; text-align: center; }
+        footer { margin-top: 40px; color: var(--secondary); font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
     <nav>
-        <button class="lang-btn active-lang" id="btn-en" onclick="changeLang('en')">EN</button>
-        <button class="lang-btn" id="btn-fr" onclick="changeLang('fr')">FR</button>
+        <button id="btn-en" class="lang-btn active" onclick="showLang('en')">English</button>
+        <button id="btn-fr" class="lang-btn" onclick="showLang('fr')">Français</button>
     </nav>
 
     <div class="container">
         
-        <div id="content-en" lang="en">
-            <h1>The <span class="accent-text">Bug</span> Fixer.</h1>
-            <p class="subtitle">When your internal team hits a wall, I find the exit.</p>
-            
+        <div id="en-content">
+            <h1>The Bug Fixer.</h1>
+            <p style="font-size: 1.2rem; color: var(--secondary);">Complex problems require surgical solutions.</p>
             <div class="card">
-                <h3>Specialized Expertise</h3>
-                <p>I solve high-complexity issues: Memory corruption, race conditions, distributed system bottlenecks, and legacy spaghetti code.</p>
+                <h3>Services</h3>
+                <p>I specialize in fixing high-level technical debt, memory leaks, and production-stopping bugs that internal teams cannot resolve.</p>
             </div>
-
             <div class="card">
-                <h3>Request a Diagnostic</h3>
+                <h3>Contact</h3>
                 <form action="https://formspree.io/f/your-unique-id" method="POST">
-                    <input type="email" name="email" placeholder="Your corporate email" required>
-                    <textarea name="message" rows="5" placeholder="Briefly describe the technical challenge..." required></textarea>
-                    <button type="submit" class="submit-btn">Submit Case</button>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <textarea name="message" rows="5" placeholder="Describe the issue..." required></textarea>
+                    <button type="submit" class="submit">Send Request</button>
                 </form>
             </div>
         </div>
 
-        <div id="content-fr" lang="fr">
-            <h1>Dépanneur de <span class="accent-text">Code</span>.</h1>
-            <p class="subtitle">Quand votre équipe interne stagne, je trouve la solution.</p>
-            
+        <div id="fr-content" class="hidden">
+            <h1>Expert Débogage.</h1>
+            <p style="font-size: 1.2rem; color: var(--secondary);">Les problèmes complexes exigent des solutions chirurgicales.</p>
             <div class="card">
-                <h3>Expertise Spécialisée</h3>
-                <p>Je résous les problèmes de haute complexité : corruption de mémoire, erreurs de concurrence (race conditions), goulots d'étranglement et code hérité complexe.</p>
+                <h3>Services</h3>
+                <p>Je me spécialise dans la résolution de dettes techniques complexes, de fuites de mémoire et de bugs critiques que les équipes internes ne parviennent pas à résoudre.</p>
             </div>
-
             <div class="card">
-                <h3>Demander un Diagnostic</h3>
+                <h3>Contact</h3>
                 <form action="https://formspree.io/f/your-unique-id" method="POST">
-                    <input type="email" name="email" placeholder="Votre email professionnel" required>
-                    <textarea name="message" rows="5" placeholder="Décrivez brièvement le défi technique..." required></textarea>
-                    <button type="submit" class="submit-btn">Envoyer le dossier</button>
+                    <input type="email" name="email" placeholder="Votre Email" required>
+                    <textarea name="message" rows="5" placeholder="Décrivez le problème..." required></textarea>
+                    <button type="submit" class="submit">Envoyer la demande</button>
                 </form>
             </div>
         </div>
 
-        <footer>
-            &copy; 2026 High-Level Debugging Services | Confidential & Precise
-        </footer>
+        <footer>© 2026 Professional Debugging Services</footer>
     </div>
 
     <script>
-        function changeLang(lang) {
-            // Toggle Content
-            document.querySelectorAll('[lang="en"]').forEach(el => el.style.display = (lang === 'en' ? 'block' : 'none'));
-            document.querySelectorAll('[lang="fr"]').forEach(el => el.style.display = (lang === 'fr' ? 'block' : 'none'));
-            
-            // Toggle Button Styles
-            document.getElementById('btn-en').classList.toggle('active-lang', lang === 'en');
-            document.getElementById('btn-fr').classList.toggle('active-lang', lang === 'fr');
-            
-            // Update Document Language
-            document.documentElement.lang = lang;
+        function showLang(lang) {
+            const en = document.getElementById('en-content');
+            const fr = document.getElementById('fr-content');
+            const btnEn = document.getElementById('btn-en');
+            const btnFr = document.getElementById('btn-fr');
+
+            if (lang === 'en') {
+                en.classList.remove('hidden');
+                fr.classList.add('hidden');
+                btnEn.classList.add('active');
+                btnFr.classList.remove('active');
+            } else {
+                fr.classList.remove('hidden');
+                en.classList.add('hidden');
+                btnFr.classList.add('active');
+                btnEn.classList.remove('active');
+            }
         }
     </script>
 </body>
